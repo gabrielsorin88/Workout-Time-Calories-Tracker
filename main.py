@@ -19,7 +19,7 @@ AGE = 35
 
 exercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
 
-exercise_text = input("wHich exercises did you do?")
+exercise_text = input("Which exercises did you do today? ")
 
 headers = {
     "x-app-id": APP_ID,
@@ -65,9 +65,11 @@ params_sheety = {
     }
 }
 
+sheety_bearer = os.getenv("sheety_bearer")
+sheety_headers = { "Authorization" : sheety_bearer }
 
 sheety_endpoint = os.getenv("sheety_endpoint")
 
-sheety_response = requests.post(sheety_endpoint, json=params_sheety)
+sheety_response = requests.post(sheety_endpoint, json=params_sheety, headers=sheety_headers)
 
-# response= requests.delete("https://api.sheety.co/ac6173a56a33e7bd88489828201a3ee6/workoutTraking/workouts/2")
+
